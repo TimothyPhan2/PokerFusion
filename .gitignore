@@ -1,0 +1,8 @@
+.DS_Store
+/web/node_modules/
+/web/dist/
+/backend/venv
+/backend/.env
+*.pyc
+/backend/routes/__pycache__
+mobile/PokerFusion/config.json

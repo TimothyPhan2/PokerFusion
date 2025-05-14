@@ -1,0 +1,43 @@
+.home-container {
+  display: flex;              /* use flexbox */
+  flex-direction: column;     /* stack children top→bottom */
+  align-items: center !important;        /* center horizontally */
+  justify-content: center !important;    /* center vertically */
+  min-height: 100vh;          /* fill viewport height */
+  padding: 1rem;
+}
+
+.home-content {
+  display: flex;              /* use flexbox here too */
+  flex-direction: column;     /* stack logo + any text/buttons */
+  align-items: center !important;        /* center horizontally */
+  justify-content: center !important;    /* center vertically (if it has its own height) */
+  text-align: center;
+  gap: 2rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center !important;        /* center logo vertically in its box */
+  justify-content: center ;    /* center logo horizontally in its box */
+  width: 100%;                /* optional: take full width to guarantee centering */
+}
+
+.create-game-button {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.create-game-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+}

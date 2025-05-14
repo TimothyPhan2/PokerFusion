@@ -1,0 +1,447 @@
+/* General Styles */
+.game-screen {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 95vw; /* Slightly wider */
+  min-height: 100vh; /* Use viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push stats to bottom */
+  padding: 1rem; /* Add padding around */
+  box-sizing: border-box;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-evenly; /* Keep space-between */
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(44, 56, 85, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  gap: 1rem; /* Add gap between items */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.game-code {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  max-width: fit-content;
+
+  margin: 0; /* Remove margin if needed */
+}
+
+.game-code:hover {
+  transform: scale(1.4); /* Subtle text scale on hover */
+}
+
+.game-code-text {
+  font-family: "Space Mono", monospace;
+  font-size: 1.8rem; /* Adjust size */
+  color: #ffffff; /* Lighter cyan */
+  text-shadow: 0 0 5px rgba(165, 243, 252, 0.4);
+}
+
+/* Poker Table Styles */
+.poker-table {
+  position: relative;
+  width: 100%; /* Take available width */
+  max-width: 1200px; 
+  aspect-ratio: 16 / 9; /* Adjust aspect ratio if needed */
+  background: rgba(35, 45, 70, 0.7); /* Image's table color */
+  backdrop-filter: blur(15px);
+  border-radius: 100px; /* Rounded ends like image */
+  border: 2px solid rgba(129, 140, 160, 0.3); /* Subtle grey border */
+  margin: auto; 
+  padding: 2vh 4vw; /* Adjust padding */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex; /* Use flex for centering cards */
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
+
+/* Community Card Styles */
+.community-cards {
+  /* position: absolute; */ /* No longer absolute if table is flex center */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  display: flex;
+  gap: .1vw; /* Adjust gap */
+  perspective: 1000px;
+  z-index: 10;
+}
+
+.card {
+  border-radius: 5px; /* Slightly rounded cards */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width:9.75rem; 
+  aspect-ratio: 2.5 / 3.5; /* Standard card aspect ratio */
+  overflow: hidden;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* --- Refine PLAYER POSITION STYLES --- */
+.player-position {
+  position: absolute;
+  /* Adjust top/left based on x/y from component props */
+  /* Example: top: calc(50% + var(--y) * 45%); left: calc(50% + var(--x) * 48%); */
+  /* We need to pass x, y as CSS variables from the component */
+  /* For now, let's keep the transform approach but adjust the calculation in TSX if needed */
+  transform: translate(-50%, -50%);
+  width: clamp(90px, 9vw, 130px); 
+  max-height: 10px;/* Slightly larger */
+  text-align: center;
+  z-index: 20;
+  transition: top 0.5s ease-out, left 0.5s ease-out; /* Add transition */
+  align-items: center;
+  justify-content: center;
+  color: #ffffff; /* White text */
+  font-size: clamp(0.8rem, 1.2vw, 1rem); /* Adjust size */
+}
+
+.player-avatar {
+  width: 5rem;
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  border-radius: 50%;
+  margin: 0 auto 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  color: #22d3ee; /* text-cyan-400 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.player-info {
+  position: relative;
+  background: rgba(55, 65, 81, 0.8); /* Slightly darker */
+  backdrop-filter: blur(8px);
+  padding: 0.6rem; /* Slightly more padding */
+  border-radius: 0.85rem; /* Slightly more rounded */
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e0e0e0; /* Lighter text */
+}
+
+/* Add styles for player state (e.g., betting turn) */
+.player-info.betting-turn {
+  outline: 2px solid #a5f3fc; /* Cyan outline */
+  box-shadow: 0 0 15px rgba(165, 243, 252, 0.5);
+}
+
+
+.player-name {
+  font-size: 1.2rem; /* Slightly larger */
+  font-weight: 600; /* Bolder */
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff; /* White name */
+}
+
+.player-chips {
+  font-size: 1rem; /* Slightly larger */
+  color: #fcd34d;
+  font-weight: 500;
+  margin-bottom: 0.2rem; /* Add margin below chips */
+}
+
+/* Add style for player position/state text (e.g., Small Blind) */
+.player-position-text {
+  font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+  color: #9ca3af; /* Gray text */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* w-8 h-8 text-white p-1 bg-white/20 rounded-full justify-center items-center align-center */
+.game-option-button {
+  width: clamp(2.5rem, 3vw, 3rem); /* Adjust size */
+  height: clamp(2.5rem, 3vw, 3rem); /* Adjust size */
+  background: rgba(44, 56, 85, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Adjust Game Stats for Header --- */
+.game-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8.5rem;
+  width: auto;
+  margin: 0 auto; /* Center self horizontally */
+  max-width: 600px;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 1;
+  box-shadow: none;
+  flex: 1;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* Styles for individual stat items in header */
+.stat-item {
+  padding: 0;
+  text-align: center;
+  color: #a0a0a0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 auto; /* Don't grow, shrink if needed, base on auto size */
+  min-width: auto; /* Remove min-width */
+}
+
+.stat-item h3 {
+  font-size: 0.7rem; /* Smaller label */
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.1rem; /* Less margin */
+  color: #b0c4de;
+}
+
+.stat-item p {
+  font-size: 1.1rem; /* Smaller value */
+  font-weight: bold;
+  color: #ffffff;
+  width: max-content; /* Remove width */;
+  animation: scaleUp 0.8s ease-in-out forwards; /* ✨ Add animation here */
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.5); /* Start half size */
+    opacity: 0;             /* (Optional) start invisible */
+  }
+  60% {
+    transform: scale(1.6); /* Grow a bit bigger first */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1); /* Settle at normal */
+    opacity: 1;
+  }
+}
+
+/* Styles for the end-of-round state in header */
+.game-stats-end-round {
+  display: flex;
+  justify-content: center; /* Center items */
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 1rem; /* Match normal padding */
+  gap: 1.5rem; /* Match normal gap */
+}
+
+.winner-info {
+  text-align: center; /* Center text */
+  display: flex; /* Use flex for layout */
+  flex-direction: column; /* Stack items vertically */;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.winner-info .latest-move {
+  font-size: 0.9rem; /* Adjust size */
+  color: #a5f3fc;
+  margin-bottom: 0; /* Remove margin */
+}
+
+.winner-info .game-state {
+  font-size: 1.2rem; /* Adjust size */
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0; /* Remove margin */
+}
+
+.deal-again-button {
+  padding: 0.6rem 1.2rem; /* Smaller button */
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.9rem; /* Smaller text */
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 3px 8px rgba(16, 185, 129, 0.3);
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.deal-again-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(16, 185, 129, 0.4);
+}
+
+.deal-again-button:active {
+  transform: scale(0.98);
+}
+
+/* Overlay Styles (Keep or adjust as needed) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #9ca3af; /* text-gray-400 */
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.button {
+  margin: 0.25rem;
+  padding: 1rem;
+  background: radial-gradient( #3a4a6a 0%, #2c3855 100%);
+  color: #67e8f9; /* text-cyan-300 */
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  font-size: 1.25rem;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.start-button {
+  margin: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #e1b517 0%, #c49b12 100%);
+  color: #ffffff; /* text-cyan-300 */
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(225, 181, 23, 0.3);
+  font-weight: 700;
+  font-size: 1.125rem;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(225, 181, 23, 0.4);
+}
+
+
+
+.winner-item {
+  position:absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display:flex;
+}
+
+.next-round-item {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top:0;
+  display: flex;
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+  margin-right: 1rem;
+}
+
+.player-cards {
+  position: absolute;
+  top: 50px;
+  left: -1rem;
+  transform: translate(-100%, -50%);
+  display: flex;
+  gap: 0.25rem;
+  z-index: 5;
+}
+
+.player-card {
+  width: clamp(4rem, 2vw, 2rem);
+  /* height: clamp(2.25rem, 3vw, 3rem); */
+  border-radius: 0.25rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: white;
+}
+
+.player-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  
+}
+
+.emote {
+  animation: scaleUp 0.8s ease-in-out forwards;
+}
