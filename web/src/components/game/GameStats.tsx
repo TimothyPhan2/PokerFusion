@@ -60,16 +60,14 @@ const GameStats: React.FC<GameStatsProps> = ({
         <>
           {/* Pot Stat */}
           <div className="stat-item">
-            <h3>Pot</h3> {/* Use CSS class */}
+            <h3>Pot</h3> 
             <p key={`pot-${gameData.pot}`}>${gameData.pot}</p>{" "}
-            {/* Use CSS class, add key for animation */}
           </div>
 
           {/* Call/MinBet Stat */}
           <div className="stat-item">
-            <h3>Call</h3> {/* Use CSS class */}
+            <h3>Call</h3>
             <p key={`minBet-${gameData.minBet}`}>${gameData.minBet}</p>{" "}
-            {/* Use CSS class, add key for animation */}
           </div>
 
           {/* Latest Move Stat */}
@@ -87,7 +85,7 @@ const GameStats: React.FC<GameStatsProps> = ({
 
           {/* Betting Turn Stat */}
           <div className="stat-item">
-            <h3>Betting</h3> {/* Use CSS class */}
+            <h3>Betting</h3>
             {gameData.turnQueue?.[0] ? (
               <p key={JSON.stringify(gameData.turnQueue[0])}>
                 {gameData.turnQueue[0].username}

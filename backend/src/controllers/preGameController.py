@@ -99,7 +99,6 @@ class preGameController:
                     break
             game.leftEarly.append(p)
             game.save()
-        # Use the pull operator to remove a player with the given username from the players list.
         result = game.update(pull__players__username=content['username'])
         if result:
             return jsonify({"message": "Player removed"}), 200

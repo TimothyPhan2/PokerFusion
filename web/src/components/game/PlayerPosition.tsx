@@ -7,15 +7,15 @@ import { useGameConfigStore } from "../../stores/gameConfigStore";
 import { Tooltip } from "react-tooltip";
 
 interface PlayerPositionProps {
-  x: number; // Use raw x/y values
+  x: number; 
   y: number;
   playerName: string;
   playerChips: number;
-  playerPosition: string; // e.g., "Dealer", "Small Blind", "Big Blind", "regular"
-  playerState: string; // e.g., "active", "folded", "betting"
-  playerCards: string[]; // Array of card strings (e.g., "AS", "KD")
+  playerPosition: string;
+  playerState: string;
+  playerCards: string[]; 
   showCards: boolean;
-  isBettingTurn: boolean; // Add this prop
+  isBettingTurn: boolean; 
   playerGamesPlayed: number;
 }
 interface EmojiProps {
@@ -129,7 +129,6 @@ React.useEffect(() => {
       <Tooltip id="my-tooltip" />
       {/* Add betting-turn class conditionally */}
       <div className={`player-info ${isBettingTurn ? "betting-turn" : ""}`}>
-        {/* Optional: Add Avatar/Initial */}
         <div className="player-avatar aspect-square">
           <img
             className="max-w-[5rem] p-2 aspect-square rounded-full"
@@ -154,7 +153,7 @@ React.useEffect(() => {
       </div>
       {selectedEmoji && (
         <div
-          key={selectedEmoji.id} // Add key here for smooth replacement animation if desired
+          key={selectedEmoji.id}
           style={{
             position: "absolute",
             top: "50%",
@@ -171,7 +170,7 @@ React.useEffect(() => {
             alt={selectedEmoji?.emoji}
             className="emote"
             style={{
-              display: "block", // Center image within the div
+              display: "block",
               margin: "0 auto 5px auto",
             }}
           />

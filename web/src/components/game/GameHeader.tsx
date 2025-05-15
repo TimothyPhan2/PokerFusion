@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import GameStats from "./GameStats"; // Import GameStats here
+import GameStats from "./GameStats";
 
 interface GameHeaderProps {
   gameCode: string | undefined;
-  gameData: any; // Add gameData prop
-  onNextRound: () => void; // Add onNextRound prop
+  gameData: any;
+  onNextRound: () => void;
   saveAndEnd: () => void;
 }
 
@@ -19,7 +19,7 @@ const GameHeader: React.FC<GameHeaderProps> = ({
     <motion.div
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="header" // Use CSS class from GameTable.css
+      className="header"
     >
       <div className="logo-container">
         <img
