@@ -4,6 +4,9 @@ A real-time, cross-platform Texas Hold ’em poker game built with React (Web), 
 
 ---
 
+## Slides
+[Presentation](https://docs.google.com/presentation/d/1H2OB212Ti4IVeDLT8XB3Zxbr5VkIMsHdfnEqyphHwq0/edit?usp=sharing)
+
 ## Table of Contents
 
 1. [Features](#-features)
@@ -47,6 +50,7 @@ A real-time, cross-platform Texas Hold ’em poker game built with React (Web), 
 ├── backend/         # Python API & WebSocket server
 ├── web/             # React web client
 ├── mobile/          # React Native (Expo) mobile client
+├── documents/       # Architectural diagrams and design documents
 └── README.md        # Project documentation
 ```
 
