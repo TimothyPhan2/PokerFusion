@@ -34,7 +34,7 @@ A real-time, cross-platform Texas Hold ’em poker game built with React (Web), 
 ## Prerequisites
 
 * **Node.js** ≥ 18 & **npm** (for Web & Mobile clients)
-* **Python** ≥ 3.8 (for Backend)
+* **Python** ≥ 3.12 (for Backend)
 * **Expo CLI** (for Mobile)
 * **ngrok** (to expose your local backend server)
 
@@ -169,3 +169,6 @@ npx expo start
 
 ## License
 Distributed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Sources
+Card images from: http://code.google.com/p/vector-playing-cards/
