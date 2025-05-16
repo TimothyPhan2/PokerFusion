@@ -4,8 +4,9 @@ A real-time, cross-platform Texas Hold ’em poker game built with React (Web), 
 
 ---
 
-## Slides
+## Slides & Demo Video
 [Presentation](https://docs.google.com/presentation/d/1H2OB212Ti4IVeDLT8XB3Zxbr5VkIMsHdfnEqyphHwq0/edit?usp=sharing)
+[Demo](https://drive.google.com/file/d/1broWwQ9l17cqZnariTS3axn53-ElaFem/view?usp=sharing)
 
 ## Table of Contents
 
